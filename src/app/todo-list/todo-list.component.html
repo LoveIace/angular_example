@@ -1,0 +1,23 @@
+<div class="list" style="margin-left: 20%; margin-right: 20%; margin-top: 50px;">
+
+  <div class="card">
+    <header class="card-header">
+      <input class="input" style="margin-right: 5px;" (keyup.enter)="add(name.value)" type="text"
+        placeholder="Item to add" #name>
+      <button class="button is-success" style="margin-right: 5px;" (click)="add(name.value)">Add new</button>
+      <button class="button is-danger" (click)="remove()">Remove {{buttonText()}}</button>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <table class="table is-striped is-hoverable" style="width:100%">
+          <tbody>
+            <tr [ngClass]="{'is-selected' : isSelected(item)}" *ngFor="let item of todolist | async" (click)="select(item)">
+              <th><input [ngModel]="isSelected(item)" type="checkbox" (click)="select(item)"></th>
+              <td>{{ item.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
